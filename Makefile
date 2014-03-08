@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	= puissance4
-FILES	= main.c error.c usage.c ft_is_number.c
+FILES	= main.c error.c usage.c ft_is_number.c get_data.c print_p4.c
 SRCS	= $(addprefix srcs/, $(FILES))
 OBJS	= $(SRCS:srcs/%.c=.obj/%.o)
 INC		= -I includes -I libft/includes

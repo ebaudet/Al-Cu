@@ -14,7 +14,12 @@
 
 int		main(int ac, char **av)
 {
+	t_data	d;
+
 	if (usage(ac, av) == -1)
 		return (-1);
+	if (get_data(&d, av) == -1)
+		return (-1);
+	print_p4(&d);
 	return (0);
 }

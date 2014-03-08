@@ -26,5 +26,9 @@ int		ft_is_number(char *str)
 		if (!ft_isdigit(str[i]))
 			return (0);
 	}
+	if (ft_strlen(str) > 10)
+		return (0);
+	if ((ft_strlen(str) == 10) && (ft_strcmp(str, "2147483647") > 0))
+		return (0);
 	return (1);
 }

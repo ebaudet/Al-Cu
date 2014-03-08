@@ -12,7 +12,20 @@
 
 #include "libft.h"
 
-int		eb_error(char *msg1, char *msg2, char *msg3)
+int		eb_error1(char *msg1)
+{
+	ft_putendl_fd(msg1, 0);
+	return (-1);
+}
+
+int		eb_error2(char *msg1, char *msg2)
+{
+	ft_putstr_fd(msg1, 0);
+	ft_putendl_fd(msg2, 0);
+	return (-1);
+}
+
+int		eb_error3(char *msg1, char *msg2, char *msg3)
 {
 	ft_putstr_fd(msg1, 0);
 	ft_putstr_fd(msg2, 0);
