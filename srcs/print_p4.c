@@ -51,7 +51,7 @@ void	print_p4(t_data *d)
 		while (++x < d->columns)
 		{
 			ft_putstr(" | ");
-			ft_putchar(d->tab[y][x]);
+			print_player(d->tab[y][x]);
 		}
 		ft_putendl(" |");
 	}
@@ -60,4 +60,20 @@ void	print_p4(t_data *d)
 	while (++x < d->columns)
 		print_nb(x + 1, 4, 1);
 	ft_putchar('\n');
+}
+
+void	print_player(char player)
+{
+	if (player == '1')
+	{
+		ft_putstr("\033[33mx\033[0m");
+	}
+	if (player == '2')
+	{
+		ft_putstr("\033[31mo\033[0m");
+	}
+	if (player == ' ')
+	{
+		ft_putstr(" ");
+	}
 }

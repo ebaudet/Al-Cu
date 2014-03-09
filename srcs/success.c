@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   success.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/07 21:06:28 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/07 21:06:28 by ebaudet          ###   ########.fr       */
+/*   Created: 2014/03/09 19:11:22 by ebaudet           #+#    #+#             */
+/*   Updated: 2014/03/09 19:11:22 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "al-cu.h"
 #include "libft.h"
 
-int		main(int ac, char **av)
+int		eb_success1(char *msg1, int ret)
 {
-	t_data	d;
+	ft_putendl(msg1);
+	return (ret);
+}
 
-	if (usage(ac, av) == -1)
-		return (-1);
-	if (get_data(&d, av) == -1)
-		return (-1);
-	information(&d, NULL);
-	print_p4(&d);
-	play_game(&d);
-	return (0);
+int		eb_success2(char *msg1, char *msg2, int ret)
+{
+	ft_putstr(msg1);
+	ft_putendl(msg2);
+	return (ret);
+}
+
+int		eb_success3(char *msg1, char *msg2, char *msg3, int ret)
+{
+	ft_putstr(msg1);
+	ft_putstr(msg2);
+	ft_putendl(msg3);
+	return (ret);
 }

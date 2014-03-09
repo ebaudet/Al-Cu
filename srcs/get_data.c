@@ -16,8 +16,6 @@
 
 int		get_data(t_data *d, char **av)
 {
-	char	*line;
-
 	if ((d->lines = ft_atoi(av[1])) < 6)
 		return (eb_error1("lines have to be bigger than 5"));
 	if ((d->columns = ft_atoi(av[2])) < 7)
@@ -27,10 +25,17 @@ int		get_data(t_data *d, char **av)
 	d->tab[d->lines] = 0;
 	if (init_tab(d) == -1)
 		return (-1);
-	ft_putendl("Hello, what is your name ?");
-	if (get_next_line(0, &line) <= 0)
-		return (eb_error1("error get line"));
-	d->name = ft_strdup(line);
+	if (eb_random())
+	{
+		d->player = '1';
+		d->computer = '2';
+	}
+	else
+	{
+		d->player = '2';
+		d->computer = '1';
+	}
+	d->turn = '1';
 	return (0);
 }
 

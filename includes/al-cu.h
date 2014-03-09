@@ -18,7 +18,9 @@ typedef struct		s_data
 	int				lines;
 	int				columns;
 	char			**tab;
-	char			*name;
+	char			player;
+	char			computer;
+	char			turn;
 }					t_data;
 
 /*
@@ -27,6 +29,13 @@ typedef struct		s_data
 int		eb_error1(char *msg1);
 int		eb_error2(char *msg1, char *msg2);
 int		eb_error3(char *msg1, char *msg2, char *msg3);
+
+/*
+** success.c
+*/
+int		eb_success1(char *msg1, int ret);
+int		eb_success2(char *msg1, char *msg2, int ret);
+int		eb_success3(char *msg1, char *msg2, char *msg3, int ret);
 
 /*
 ** usage.c
@@ -50,6 +59,7 @@ void	clear_tab(t_data *d);
 */
 void	print_nb(int nb, int width, int center);
 void	print_p4(t_data *d);
+void	print_player(char player);
 
 /*
 ** random.c
@@ -60,6 +70,12 @@ int		eb_random();
 ** option.c
 */
 int		information(t_data *d, char *line);
+
+/*
+** play_game.c
+*/
+int		play_game(t_data *d);
+int		eb_put_piece(t_data *d, int pos);
 
 /*
 ** game_analyses.c

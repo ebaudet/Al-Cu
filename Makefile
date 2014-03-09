@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -13,6 +14,7 @@
 NAME	= puissance4
 FILES	= main.c \
 		error.c \
+		success.c \
 		usage.c \
 		ft_is_number.c \
 		get_data.c \
@@ -20,6 +22,7 @@ FILES	= main.c \
 		random.c \
 		option.c \
 		game_analyses.c \
+		play_game.c \
 
 SRCS	= $(addprefix srcs/, $(FILES))
 OBJS	= $(SRCS:srcs/%.c=.obj/%.o)

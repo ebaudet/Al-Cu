@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "al-cu.h"
+#include "libft.h"
 
 int		game_analyse(t_data *d, char player)
 {
+	ft_putendl("analyse");
 	if (diag_analyse(d, player) || diag_inverse_analyse(d, player)
 		|| vertical_analyse(d, player) || horizontal_analyse(d, player))
 		return (1);
@@ -27,21 +29,22 @@ int		diag_analyse(t_data *d, char player)
 	int		count;
 
 	y = -1;
-	while (++y < (d->columns - 3))
+	while (++y < (d->lines - 3))
 	{
 		x = -1;
-		while (++x < (d->lines - 3))
+		while (++x < (d->columns - 3))
 		{
 			count = 0;
 			while (d->tab[y][x] == player)
 			{
 				x++;
 				y++;
+				count++;
 				if (count == 4)
 					return (1);
 			}
-			y = y - count;
-			x = x - count;
+			y -= count;
+			x -= count;
 		}
 	}
 	return (0);
@@ -53,22 +56,23 @@ int		diag_inverse_analyse(t_data *d, char player)
 	int		y;
 	int		count;
 
-	y = 2;
-	while (++y < d->columns)
+	y = -1;
+	while (++y < (d->lines - 3))
 	{
-		x = 2;
-		while (++x < d->lines)
+		x = -1;
+		while (++x < d->columns)
 		{
 			count = 0;
 			while (d->tab[y][x] == player)
 			{
-				x++;
-				y--;
+				y++;
+				x--;
+				count++;
 				if (count == 4)
 					return (1);
 			}
-			y = y + count;
-			x = x - count;
+			y -= count;
+			x += count;
 		}
 	}
 	return (0);
@@ -81,19 +85,20 @@ int		vertical_analyse(t_data *d, char player)
 	int		count;
 
 	y = -1;
-	while (++y < (d->columns - 3))
+	while (++y < (d->lines - 3))
 	{
 		x = -1;
-		while (++x < d->lines)
+		while (++x < d->columns)
 		{
 			count = 0;
 			while (d->tab[y][x] == player)
 			{
 				y++;
+				count++;
 				if (count == 4)
 					return (1);
 			}
-			y = y - count;
+			y -= count;
 		}
 	}
 	return (0);
@@ -106,19 +111,20 @@ int		horizontal_analyse(t_data *d, char player)
 	int		count;
 
 	y = -1;
-	while (++y < d->columns)
+	while (++y < d->lines)
 	{
 		x = -1;
-		while (++x < (d->lines - 3))
+		while (++x < (d->columns - 3))
 		{
 			count = 0;
 			while (d->tab[y][x] == player)
 			{
 				x++;
+				count++;
 				if (count == 4)
 					return (1);
 			}
-			x = x - count;
+			x -= count;
 		}
 	}
 	return (0);
