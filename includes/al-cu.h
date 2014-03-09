@@ -43,11 +43,31 @@ int		ft_is_number(char *str);
 */
 int		get_data(t_data *d, char **av);
 int		init_tab(t_data *d);
+void	clear_tab(t_data *d);
 
 /*
 ** print_p4.c
 */
 void	print_nb(int nb, int width, int center);
 void	print_p4(t_data *d);
+
+/*
+** random.c
+*/
+int		eb_random();
+
+/*
+** option.c
+*/
+int		information(t_data *d, char *line);
+
+/*
+** game_analyses.c
+*/
+int		game_analyse(t_data *d, char player);
+int		diag_analyse(t_data *d, char player);
+int		diag_inverse_analyse(t_data *d, char player);
+int		vertical_analyse(t_data *d, char player);
+int		horizontal_analyse(t_data *d, char player);
 
 #endif /* !AL_CU_H */

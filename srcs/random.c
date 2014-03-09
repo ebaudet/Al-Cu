@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/07 21:06:28 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/07 21:06:28 by ebaudet          ###   ########.fr       */
+/*   Created: 2014/03/09 03:22:09 by ebaudet           #+#    #+#             */
+/*   Updated: 2014/03/09 03:22:09 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "al-cu.h"
-#include "libft.h"
+#include <time.h>
+#include <stdlib.h>
 
-int		main(int ac, char **av)
+int		eb_random()
 {
-	t_data	d;
-
-	if (usage(ac, av) == -1)
-		return (-1);
-	if (get_data(&d, av) == -1)
-		return (-1);
-	information(&d, NULL);
-	print_p4(&d);
-	ft_putnbr(eb_random());
-	return (0);
+	srand(time(NULL));
+	return (rand() % 2);
 }

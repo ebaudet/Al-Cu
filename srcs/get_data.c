@@ -52,3 +52,17 @@ int		init_tab(t_data *d)
 	}
 	return (0);
 }
+
+void	clear_tab(t_data *d)
+{
+	int		x;
+	int		y;
+
+	y = -1;
+	while (++y < d->lines)
+	{
+		x = -1;
+		while (++x < d->columns)
+			d->tab[y][x] = ' ';
+	}
+}
