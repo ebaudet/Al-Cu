@@ -13,25 +13,53 @@
 #include "libft.h"
 #include "al-cu.h"
 
+void	who_play(t_data *d)
+{
+	if (d->turn == d->computer)
+	{
+		ft_putendl("\nComputer turn :");
+	}
+	else
+		ft_putendl("\nYour turn :");
+}
+
+int		game_finish(t_data *d, char player)
+{
+	if (player == d->computer)
+		ft_putendl("Computer Win !");
+	else if (player == d->player)
+		ft_putendl("You Win !");
+	else
+		ft_putendl("Match null.");
+	return (0);
+}
+
 int		play_game(t_data *d)
 {
 	char	*line;
 
-	while (get_next_line(0, &line) > 0)
+	while (42)
 	{
-		if (ft_strlen(line) == 0)
+		if (d->turn == d->player)
+			get_next_line(0, &line);
+		print_p4(d);
+		who_play(d);
+		if (d->turn == d->computer)
+			computer_play(d);
+		if (d->turn != d->computer && ft_strlen(line) == 0)
 			continue ;
-		if (information(d, line) == -1)
+		if (d->turn != d->computer && information(d, line) == -1)
 			return (-1);
 		if (game_analyse(d, '1'))
-			return (eb_success1("player 1 win", 1));
+			return (game_finish(d, '1'));
 		if (game_analyse(d, '2'))
-			return (eb_success1("player 2 win", 2));
+			return (game_finish(d, '2'));
+		d->turn = (d->turn == '1' ? '2' : '1');
 	}
 	return (0);
 }
 
-int		eb_put_piece(t_data *d, int pos)
+int		eb_put_piece(t_data *d, int pos, char print)
 {
 	int		y;
 
@@ -46,12 +74,30 @@ int		eb_put_piece(t_data *d, int pos)
 				break ;
 			}
 		}
-		print_p4(d);
-		d->turn = (d->turn == '1' ? '2' : '1');
+		if (print)
+			print_p4(d);
 	}
 	else
 	{
-		ft_putendl("column is empty");
+		if (print)
+			ft_putendl("column is empty");
+		return (1);
+	}
+	return (0);
+}
+
+int		eb_release_piece(t_data *d, int pos)
+{
+	int		y;
+
+	y = -1;
+	while (++y < d->lines)
+	{
+		if (d->tab[y][pos] != ' ')
+		{
+			d->tab[y][pos] = ' ';
+			break ;
+		}
 	}
 	return (0);
 }

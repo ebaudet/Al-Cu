@@ -13,7 +13,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-int		eb_random()
+int		eb_random(void)
 {
 	srand(time(NULL));
 	return (rand() % 2);

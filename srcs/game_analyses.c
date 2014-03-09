@@ -15,7 +15,6 @@
 
 int		game_analyse(t_data *d, char player)
 {
-	ft_putendl("analyse");
 	if (diag_analyse(d, player) || diag_inverse_analyse(d, player)
 		|| vertical_analyse(d, player) || horizontal_analyse(d, player))
 		return (1);

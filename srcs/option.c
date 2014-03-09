@@ -38,7 +38,7 @@ static void	print_information(t_data *d)
 		ft_putstr(" : player : ");
 		print_player(d->player);
 	}
-	ft_putendl("\n\tbon chance !");
+	ft_putendl("\n\tbon chance !\n");
 }
 
 int			information(t_data *d, char *line)
@@ -51,6 +51,8 @@ int			information(t_data *d, char *line)
 	{
 		ft_putendl("restart game");
 		clear_tab(d);
+		random_player(d);
+		print_p4(d);
 	}
 	else if (line && !ft_strcmp(line, "p"))
 		print_p4(d);
@@ -62,7 +64,7 @@ int			information(t_data *d, char *line)
 		ft_putchar('\n');
 	}
 	else if (line && ft_is_number(line))
-		return (eb_put_piece(d, ft_atoi(line) - 1));
+		return (eb_put_piece(d, ft_atoi(line) - 1, 1));
 	else
 		ft_putendl("try an another commande");
 	return (0);

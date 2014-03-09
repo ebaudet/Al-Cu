@@ -25,17 +25,7 @@ int		get_data(t_data *d, char **av)
 	d->tab[d->lines] = 0;
 	if (init_tab(d) == -1)
 		return (-1);
-	if (eb_random())
-	{
-		d->player = '1';
-		d->computer = '2';
-	}
-	else
-	{
-		d->player = '2';
-		d->computer = '1';
-	}
-	d->turn = '1';
+	random_player(d);
 	return (0);
 }
 
@@ -70,4 +60,19 @@ void	clear_tab(t_data *d)
 		while (++x < d->columns)
 			d->tab[y][x] = ' ';
 	}
+}
+
+void	random_player(t_data *d)
+{
+	if (eb_random())
+	{
+		d->player = '1';
+		d->computer = '2';
+	}
+	else
+	{
+		d->player = '2';
+		d->computer = '1';
+	}
+	d->turn = '1';
 }

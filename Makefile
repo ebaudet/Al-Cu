@@ -1,4 +1,3 @@
-
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -23,6 +22,9 @@ FILES	= main.c \
 		option.c \
 		game_analyses.c \
 		play_game.c \
+		computer.c \
+		analyse_cell.c \
+		analyse_cell_2.c \
 
 SRCS	= $(addprefix srcs/, $(FILES))
 OBJS	= $(SRCS:srcs/%.c=.obj/%.o)
