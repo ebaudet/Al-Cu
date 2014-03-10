@@ -31,6 +31,8 @@ int		computer_play(t_data *d)
 			if (val > bestval)
 			{
 				bestval = val;
+				ft_putnbr(bestval);
+				ft_putchar(' ');
 				bestcol = x;
 			}
 		}
@@ -47,14 +49,14 @@ int		min(t_data *d, int x, char player, int depth)
 
 	eb_put_piece(d, x, 0);
 	bestval = 100000;
-	if ((!game_analyse(d, player)) && depth < 4)
+	if ((!game_analyse(d, player)) && depth < 2)
 	{
 		i = -1;
 		while (++i < d->columns)
 		{
 			if (!eb_can_play(d, i))
 			{
-				val = max(d, i, d->turn == '1' ? '2' : '1', depth + 1);
+				val = max(d, i, d->player, depth + 1);
 				bestval = (val < bestval ? val : bestval);
 			}
 		}
@@ -74,14 +76,14 @@ int		max(t_data *d, int x, char player, int depth)
 
 	eb_put_piece(d, x, 0);
 	bestval = -100000;
-	if ((!game_analyse(d, player)) && depth < 4)
+	if ((!game_analyse(d, player)) && depth < 2)
 	{
 		i = -1;
 		while (++i < d->columns)
 		{
 			if (!eb_can_play(d, i))
 			{
-				val = min(d, i, d->turn == '1' ? '2' : '1', depth + 1);
+				val = min(d, i, d->computer, depth + 1);
 				bestval = (val > bestval ? val : bestval);
 			}
 		}

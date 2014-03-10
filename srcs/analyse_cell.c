@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "al-cu.h"
 
 int		get_cell_value(t_data *d, int row, int col)
@@ -20,7 +21,13 @@ int		get_cell_value(t_data *d, int row, int col)
 	coeff = (d->tab[row][col] == d->computer ? 1 : -1);
 	coeff = (d->tab[row][col] == ' ' ? 0 : coeff);
 	if (coeff && wins(d, row, col))
+	{
+		ft_putstr("condition de victoire : ");
+		ft_putnbr(100000 / d->columns / d->lines * coeff);
+		ft_putchar('\n');
+		print_p4(d);
 		return (100000 / d->columns / d->lines * coeff);
+	}
 	rslt = d->columns - ft_abs(d->columns / 2 - col);
 	rslt += get_horizontal_number(d, row, col) * d->columns;
 	rslt += get_vertical_number(d, row, col) * d->columns;
