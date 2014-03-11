@@ -16,9 +16,7 @@
 void	who_play(t_data *d)
 {
 	if (d->turn == d->computer)
-	{
 		ft_putendl("\nComputer turn :");
-	}
 	else
 		ft_putendl("\nYour turn :");
 }
@@ -55,6 +53,8 @@ int		play_game(t_data *d)
 		if (game_analyse(d, '2'))
 			return (game_finish(d, '2'));
 		d->turn = (d->turn == '1' ? '2' : '1');
+		if (d->turn == d->player)
+			ft_strdel(&line);
 	}
 	return (0);
 }
