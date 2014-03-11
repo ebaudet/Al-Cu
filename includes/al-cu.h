@@ -75,7 +75,7 @@ int		information(t_data *d, char *line);
 /*
 ** play_game.c
 */
-void	who_play(t_data *d);
+int		who_play(t_data *d);
 int		game_finish(t_data *d, char player);
 int		play_game(t_data *d);
 int		eb_put_piece(t_data *d, int pos, char print);

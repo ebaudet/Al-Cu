@@ -22,7 +22,6 @@ int		main(int ac, char **av)
 	if (get_data(&d, av) == -1)
 		return (-1);
 	information(&d, NULL);
-	print_p4(&d);
-	play_game(&d);
+	who_play(&d);
 	return (0);
 }

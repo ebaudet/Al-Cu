@@ -67,5 +67,5 @@ int			information(t_data *d, char *line)
 		return (eb_put_piece(d, ft_atoi(line) - 1, 1));
 	else
 		ft_putendl("try an another commande");
-	return (0);
+	return (1);
 }

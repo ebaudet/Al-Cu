@@ -31,8 +31,8 @@ int		computer_play(t_data *d)
 			if (val > bestval)
 			{
 				bestval = val;
-				ft_putnbr(bestval);
-				ft_putchar(' ');
+				/*ft_putnbr(bestval);
+				ft_putchar(' ');*/
 				bestcol = x;
 			}
 		}

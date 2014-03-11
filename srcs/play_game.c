@@ -13,12 +13,30 @@
 #include "libft.h"
 #include "al-cu.h"
 
-void	who_play(t_data *d)
+int		who_play(t_data *d)
 {
-	if (d->turn == d->computer)
-		ft_putendl("\nComputer turn :");
-	else
-		ft_putendl("\nYour turn :");
+	while (42)
+	{
+		print_p4(d);
+		if (game_analyse(d, '1'))
+			return (game_finish(d, '1'));
+		if (game_analyse(d, '2'))
+			return (game_finish(d, '2'));
+		if (d->turn == d->computer)
+		{
+			ft_putendl("\nComputer turn :");
+			if (computer_play(d) == -1)
+				return (-1);
+		}
+		else
+		{
+			ft_putendl("\nYour turn :");
+			if (play_game(d) == -1)
+				return (-1);
+		}
+		d->turn = (d->turn == '1' ? '2' : '1');
+	}
+	return (0);
 }
 
 int		game_finish(t_data *d, char player)
@@ -35,26 +53,20 @@ int		game_finish(t_data *d, char player)
 int		play_game(t_data *d)
 {
 	char	*line;
+	int		ret;
 
 	while (42)
 	{
 		if (d->turn == d->player)
 			get_next_line(0, &line);
-		print_p4(d);
-		who_play(d);
-		if (d->turn == d->computer)
-			computer_play(d);
 		if (d->turn != d->computer && ft_strlen(line) == 0)
 			continue ;
-		if (d->turn != d->computer && information(d, line) == -1)
+		if (d->turn != d->computer && (ret = information(d, line)) == -1)
 			return (-1);
-		if (game_analyse(d, '1'))
-			return (game_finish(d, '1'));
-		if (game_analyse(d, '2'))
-			return (game_finish(d, '2'));
-		d->turn = (d->turn == '1' ? '2' : '1');
 		if (d->turn == d->player)
 			ft_strdel(&line);
+		if (ret == 0)
+			break ;
 	}
 	return (0);
 }
@@ -74,8 +86,8 @@ int		eb_put_piece(t_data *d, int pos, char print)
 				break ;
 			}
 		}
-		if (print)
-			print_p4(d);
+		/*if (print)
+			print_p4(d);*/
 	}
 	else
 	{
