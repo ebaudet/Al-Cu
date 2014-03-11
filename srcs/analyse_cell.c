@@ -24,8 +24,8 @@ int		get_cell_value(t_data *d, int row, int col)
 	{
 		/*ft_putstr("condition de victoire : ");
 		ft_putnbr(100000 / d->columns / d->lines * coeff);
-		ft_putchar('\n');
-		print_p4(d);*/
+		ft_putchar('\n');*/
+		/*print_p4(d);*/
 		return (100000 / d->columns / d->lines * coeff);
 	}
 	rslt = d->columns - ft_abs(d->columns / 2 - col);
