@@ -19,7 +19,7 @@ int		get_cell_value(t_data *d, int row, int col)
 	int	coeff;
 
 	coeff = (d->tab[row][col] == d->computer ? 1 : -1);
-	/*coeff = (d->tab[row][col] == ' ' ? 0 : coeff);*/
+	coeff = (d->tab[row][col] == ' ' ? 0 : coeff);
 	if (coeff && wins(d, row, col))
 	{
 		/*ft_putstr("condition de victoire : ");
